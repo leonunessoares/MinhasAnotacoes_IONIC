@@ -1,20 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-html>
+  <ion-body>
+    
+    <ion-button color="primary" shape="round" fill="outline" expand="full"><b>MINHAS ANOTAÇÕES</b></ion-button><br />
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+    <ion-item *ngFor="let item of row_data">   
+      <ion-input autofocus=true (ionFocus)="pegaTexto(item.texto);" readonly ></ion-input> 
+    </ion-item>
+         
+    <ion-textarea rows="17" class="corTexto" [(ngModel)]="name_model"  name="texto" > </ion-textarea>   
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">      
+      <ion-fab-button>
+        <ion-icon name="save" (click)="insertRow();" ></ion-icon> 
+      </ion-fab-button>
+     
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">      
+      <ion-fab-button>
+        <ion-icon name="folder-open" (click)="exibeToast('Documento aberto!');"></ion-icon> 
+      </ion-fab-button>
+     
+    </ion-fab>
+   
+  </ion-body>
+</ion-html>
